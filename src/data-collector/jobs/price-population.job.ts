@@ -28,8 +28,8 @@ export class PricePopulationJob {
       .get<SymbolPriceTickerResponse>(url)
       .pipe(
         catchError((error: AxiosError) => {
-          this.logger.error(error.response.data);
-          throw "An error happened!";
+          this.logger.error(error);
+          throw new Error("An error happened!");
         }),
         map((response) => {
           return {
