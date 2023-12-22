@@ -6,5 +6,6 @@ export const routesV1 = {
   version: v1,
   prices: {
     root: pricesRoot,
+    status: `${pricesRoot}/status`,
   },
 };
