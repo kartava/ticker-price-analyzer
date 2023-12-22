@@ -3,10 +3,15 @@ import { HttpModule } from "@nestjs/axios";
 import { PriceService } from "./services/price-service";
 import { PriceHttpController } from "./controllers/price.http.controller";
 import { PricePopulationJob } from "./jobs/price-population.job";
+import { PriceStatusService } from "./services/price-status.service";
 
 const httpControllers = [PriceHttpController];
 
-const providers: Provider[] = [PriceService, PricePopulationJob];
+const providers: Provider[] = [
+  PriceService,
+  PriceStatusService,
+  PricePopulationJob,
+];
 
 @Module({
   imports: [

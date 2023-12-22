@@ -8,3 +8,8 @@ export type SymbolPriceTicker = {
   price: number;
   time: string;
 };
+
+export enum SymbolPriceStatus {
+  PUMPING = "PUMPING",
+  DUMPING = "DUMPING",
+}
