@@ -1,6 +1,6 @@
 export type SymbolPriceTickerResponse = {
   symbol: string;
-  price: number;
+  price: string;
 };
 
 export type SymbolPriceTicker = {

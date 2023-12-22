@@ -34,7 +34,7 @@ export class PricePopulationJob {
         map((response) => {
           return {
             symbol: response.data.symbol,
-            price: response.data.price,
+            price: Number.parseFloat(response.data.price),
             time: new Date().toISOString(),
           } satisfies SymbolPriceTicker;
         }),
