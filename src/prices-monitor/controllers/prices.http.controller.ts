@@ -1,12 +1,12 @@
 import { Controller, Get } from "@nestjs/common";
-import { PricesService } from "../services/prices-service";
-import { routesV1 } from "../../configs/app.routes";
-import { PriceStatusService } from "../services/price-status.service";
+import { routesV1 } from "@configs/app.routes";
+import { priceStatusConfig } from "@configs/price-status.config";
+import { PricesService } from "@src/prices-monitor/services/prices-service";
+import { PriceStatusService } from "@src/prices-monitor/services/price-status.service";
 import {
   SymbolPriceDto,
   SymbolPriceStatusDto,
-} from "../dtos/price.response.dto";
-import { priceStatusConfig } from "../../configs/price-status.config";
+} from "@src/prices-monitor/dtos/price.response.dto";
 
 @Controller()
 export class PricesHttpController {

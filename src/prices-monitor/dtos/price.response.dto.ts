@@ -1,4 +1,4 @@
-import { SymbolPriceStatus } from "../domain/ticker.types";
+import { SymbolPriceStatus } from "@src/prices-monitor/domain/ticker.types";
 
 export class SymbolPriceDto {
   symbol: string;

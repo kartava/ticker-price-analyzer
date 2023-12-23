@@ -1,11 +1,11 @@
 import { Module, OnApplicationBootstrap, Provider } from "@nestjs/common";
 import { HttpModule } from "@nestjs/axios";
-import { PricesService } from "./services/prices-service";
-import { PricesHttpController } from "./controllers/prices.http.controller";
-import { PriceStatusService } from "./services/price-status.service";
-import { MarketDataProvider } from "./exchange/market-data.provider";
-import { BinanceApiDataProvider } from "./exchange/binance-api-data.provider";
-import { PriceNotificationService } from "./services/price-notification.service";
+import { PricesHttpController } from "@src/prices-monitor/controllers/prices.http.controller";
+import { PricesService } from "@src/prices-monitor/services/prices-service";
+import { PriceStatusService } from "@src/prices-monitor/services/price-status.service";
+import { BinanceApiDataProvider } from "@src/prices-monitor/exchange/binance-api-data.provider";
+import { MarketDataProvider } from "@src/prices-monitor/exchange/market-data.provider";
+import { PriceNotificationService } from "@src/prices-monitor/services/price-notification.service";
 
 const httpControllers = [PricesHttpController];
 

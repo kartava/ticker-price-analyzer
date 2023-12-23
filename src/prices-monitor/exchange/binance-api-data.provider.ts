@@ -1,17 +1,16 @@
 import { Injectable, Logger } from "@nestjs/common";
-import { PricesService } from "../services/prices-service";
+import { AxiosError } from "axios";
 import { HttpService } from "@nestjs/axios";
 import { catchError, map, Observable, tap } from "rxjs";
 import {
   SymbolPriceTicker,
   SymbolPriceTickerResponse,
-} from "../domain/ticker.types";
-import { binanceConfig } from "../../configs/binance.config";
-import { AxiosError } from "axios";
+} from "@src/prices-monitor/domain/ticker.types";
+import { binanceConfig } from "@configs/binance.config";
 
 @Injectable()
 export class BinanceApiDataProvider {
-  private readonly logger = new Logger(PricesService.name);
+  private readonly logger = new Logger(BinanceApiDataProvider.name);
 
   constructor(private readonly httpService: HttpService) {}
 

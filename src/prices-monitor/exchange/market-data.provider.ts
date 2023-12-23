@@ -1,14 +1,13 @@
 import { Injectable, Logger } from "@nestjs/common";
 import { BehaviorSubject, interval, Observable, switchMap } from "rxjs";
-import { SymbolPriceTicker } from "../domain/ticker.types";
 import { HttpService } from "@nestjs/axios";
-import { PricesService } from "../services/prices-service";
-import { BinanceApiDataProvider } from "./binance-api-data.provider";
-import { marketDataProviderConfig } from "../../configs/market-data-provider.config";
+import { SymbolPriceTicker } from "@src/prices-monitor/domain/ticker.types";
+import { BinanceApiDataProvider } from "@src/prices-monitor/exchange/binance-api-data.provider";
+import { marketDataProviderConfig } from "@configs/market-data-provider.config";
 
 @Injectable()
 export class MarketDataProvider {
-  private readonly logger = new Logger(PricesService.name);
+  private readonly logger = new Logger(MarketDataProvider.name);
   private marketData$ = new BehaviorSubject<SymbolPriceTicker[]>([]);
 
   constructor(

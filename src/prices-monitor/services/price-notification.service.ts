@@ -1,19 +1,17 @@
 import { Injectable, Logger } from "@nestjs/common";
-import { map, tap } from "rxjs";
-import { SymbolPriceStatus } from "../domain/ticker.types";
-import { PricesService } from "./prices-service";
-import { MarketDataProvider } from "../exchange/market-data.provider";
-import { telegramConfig } from "../../configs/telegram.config";
+import { map, tap, distinctUntilChanged } from "rxjs";
 import { Telegraf } from "telegraf";
-import { PriceStatusService } from "./price-status.service";
-import { distinctUntilChanged } from "rxjs";
-import { priceStatusConfig } from "../../configs/price-status.config";
+import { telegramConfig } from "@configs/telegram.config";
+import { priceStatusConfig } from "@configs/price-status.config";
+import { MarketDataProvider } from "@src/prices-monitor/exchange/market-data.provider";
+import { PriceStatusService } from "@src/prices-monitor/services/price-status.service";
+import { SymbolPriceStatus } from "@src/prices-monitor/domain/ticker.types";
 
 const bot = new Telegraf(telegramConfig.botToken);
 
 @Injectable()
 export class PriceNotificationService {
-  private readonly logger = new Logger(PricesService.name);
+  private readonly logger = new Logger(PriceNotificationService.name);
 
   constructor(
     private readonly marketDataProvider: MarketDataProvider,

@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
-import { SymbolPriceTicker } from "../domain/ticker.types";
-import { MarketDataProvider } from "../exchange/market-data.provider";
+import { MarketDataProvider } from "@src/prices-monitor/exchange/market-data.provider";
+import { SymbolPriceTicker } from "@src/prices-monitor/domain/ticker.types";
 
 @Injectable()
 export class PricesService {
