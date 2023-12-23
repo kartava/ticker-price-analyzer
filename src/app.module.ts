@@ -1,10 +1,10 @@
 import "dotenv/config";
 import { Module } from "@nestjs/common";
 import { ScheduleModule } from "@nestjs/schedule";
-import { DataCollectorModule } from "./data-collector/data-collector.module";
+import { PricesMonitorModule } from "./prices-monitor/prices-monitor.module";
 
 @Module({
-  imports: [ScheduleModule.forRoot(), DataCollectorModule],
+  imports: [ScheduleModule.forRoot(), PricesMonitorModule],
   controllers: [],
   providers: [],
 })

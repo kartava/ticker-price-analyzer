@@ -1,5 +1,5 @@
 import { Injectable, Logger } from "@nestjs/common";
-import { PriceService } from "../services/price-service";
+import { PricesService } from "../services/prices-service";
 import { HttpService } from "@nestjs/axios";
 import { catchError, map, Observable, tap } from "rxjs";
 import {
@@ -11,7 +11,7 @@ import { AxiosError } from "axios";
 
 @Injectable()
 export class BinanceApiDataProvider {
-  private readonly logger = new Logger(PriceService.name);
+  private readonly logger = new Logger(PricesService.name);
 
   constructor(private readonly httpService: HttpService) {}
 

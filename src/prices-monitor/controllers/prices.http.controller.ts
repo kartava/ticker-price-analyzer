@@ -1,17 +1,17 @@
 import { Controller, Get } from "@nestjs/common";
-import { PriceService } from "../services/price-service";
+import { PricesService } from "../services/prices-service";
 import { routesV1 } from "../../configs/app.routes";
 import { PriceStatusService } from "../services/price-status.service";
 import {
   SymbolPriceDto,
   SymbolPriceStatusDto,
-} from "../dtos/dtos/price.response.dto";
+} from "../dtos/price.response.dto";
 import { priceStatusConfig } from "../../configs/price-status.config";
 
 @Controller()
-export class PriceHttpController {
+export class PricesHttpController {
   constructor(
-    private readonly priceService: PriceService,
+    private readonly priceService: PricesService,
     private readonly priceChangingService: PriceStatusService,
   ) {}
 

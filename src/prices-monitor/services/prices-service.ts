@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common";
 import { SymbolPriceTicker } from "../domain/ticker.types";
-import { MarketDataProvider } from "./market-data-provider";
+import { MarketDataProvider } from "../exchange/market-data.provider";
 
 @Injectable()
-export class PriceService {
+export class PricesService {
   constructor(private readonly marketDataProvider: MarketDataProvider) {}
 
   getAllPriceTickers(): SymbolPriceTicker[] {
@@ -11,7 +11,7 @@ export class PriceService {
   }
 
   getLastNPriceTickers(count: number): SymbolPriceTicker[] {
-    const lastNRecordsIndex = 0 - count;
-    return this.getAllPriceTickers().slice(lastNRecordsIndex);
+    const windowStartIndex = 0 - count;
+    return this.getAllPriceTickers().slice(windowStartIndex);
   }
 }

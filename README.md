@@ -1,4 +1,4 @@
-# Ticker Price Analyzer
+# Ticker Price Monitor
 
 ## Prerequisites
 
@@ -13,8 +13,8 @@ development system:
 First clone the repository from GitHub and switch to the project directory:
 
 ```bash
-$ git clone https://github.com/kartava/ticker-price-analyzer
-$ cd ticker-price-analyzer
+$ git clone https://github.com/kartava/ticker-price-monitor
+$ cd ticker-price-monitor
 ```
 
 Install project dependencies:
