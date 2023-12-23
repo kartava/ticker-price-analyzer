@@ -10,6 +10,6 @@ export type SymbolPriceTicker = {
 };
 
 export enum SymbolPriceStatus {
-  PUMPING = "PUMPING",
-  DUMPING = "DUMPING",
+  PUMPING = "🟢PUMPING",
+  DUMPING = "🔴DUMPING",
 }

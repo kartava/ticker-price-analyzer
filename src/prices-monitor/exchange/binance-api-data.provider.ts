@@ -31,7 +31,7 @@ export class BinanceApiDataProvider {
           }) as SymbolPriceTicker,
       ),
       tap((data) => {
-        this.logger.debug("Price Received:", data);
+        this.logger.debug(`Market Data Received: ${JSON.stringify(data)}`);
       }),
     );
   }
