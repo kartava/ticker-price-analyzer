@@ -16,13 +16,13 @@ export class PriceHttpController {
 
   @Get(routesV1.prices.root)
   async getPrices(): Promise<SymbolPriceDto[]> {
-    const prices = await this.priceService.getAllPrices();
+    const prices = this.priceService.getAllPriceTickers();
     return prices.map((price) => new SymbolPriceDto(price));
   }
 
   @Get(routesV1.prices.status)
   async getPriceStatus(): Promise<SymbolPriceStatusDto> {
-    const pricesData = await this.priceService.getAllPrices();
+    const pricesData = this.priceService.getAllPriceTickers();
     const priceList = pricesData.map((record) => {
       return record.price;
     });

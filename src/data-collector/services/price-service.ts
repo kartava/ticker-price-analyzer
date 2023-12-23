@@ -1,21 +1,17 @@
 import { Injectable } from "@nestjs/common";
-import { BehaviorSubject, firstValueFrom } from "rxjs";
 import { SymbolPriceTicker } from "../domain/ticker.types";
-import { dataCollectorConfig } from "../../configs/data-collector.config";
+import { MarketDataProvider } from "./market-data-provider";
 
 @Injectable()
 export class PriceService {
-  private symbolPricesSubject = new BehaviorSubject<SymbolPriceTicker[]>([]);
+  constructor(private readonly marketDataProvider: MarketDataProvider) {}
 
-  async getAllPrices(): Promise<SymbolPriceTicker[]> {
-    return await firstValueFrom(this.symbolPricesSubject.asObservable());
+  getAllPriceTickers(): SymbolPriceTicker[] {
+    return this.marketDataProvider.marketData.getValue();
   }
 
-  updatePrice(record: SymbolPriceTicker): void {
-    const currentValues = this.symbolPricesSubject.getValue();
-    if (currentValues.length >= dataCollectorConfig.windowLength) {
-      currentValues.shift();
-    }
-    this.symbolPricesSubject.next([...currentValues, record]);
+  getLastNPriceTickers(count: number): SymbolPriceTicker[] {
+    const lastNRecordsIndex = 0 - count;
+    return this.getAllPriceTickers().slice(lastNRecordsIndex);
   }
 }

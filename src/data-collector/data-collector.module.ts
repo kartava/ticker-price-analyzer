@@ -1,16 +1,18 @@
-import { Module, Provider } from "@nestjs/common";
+import { Module, OnApplicationBootstrap, Provider } from "@nestjs/common";
 import { HttpModule } from "@nestjs/axios";
 import { PriceService } from "./services/price-service";
 import { PriceHttpController } from "./controllers/price.http.controller";
-import { PricePopulationJob } from "./jobs/price-population.job";
 import { PriceStatusService } from "./services/price-status.service";
+import { MarketDataProvider } from "./services/market-data-provider";
+import { BinanceApiDataProvider } from "./exchange/binance-api-data.provider";
 
 const httpControllers = [PriceHttpController];
 
 const providers: Provider[] = [
   PriceService,
   PriceStatusService,
-  PricePopulationJob,
+  BinanceApiDataProvider,
+  MarketDataProvider,
 ];
 
 @Module({
@@ -25,4 +27,10 @@ const providers: Provider[] = [
   providers: [...providers],
   controllers: [...httpControllers],
 })
-export class DataCollectorModule {}
+export class DataCollectorModule implements OnApplicationBootstrap {
+  constructor(private readonly marketDataProvider: MarketDataProvider) {}
+
+  onApplicationBootstrap(): void {
+    this.marketDataProvider.initialize();
+  }
+}
