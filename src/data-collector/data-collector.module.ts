@@ -5,6 +5,7 @@ import { PriceHttpController } from "./controllers/price.http.controller";
 import { PriceStatusService } from "./services/price-status.service";
 import { MarketDataProvider } from "./services/market-data-provider";
 import { BinanceApiDataProvider } from "./exchange/binance-api-data.provider";
+import { PriceNotificationService } from "./services/price-notification-service";
 
 const httpControllers = [PriceHttpController];
 
@@ -13,6 +14,7 @@ const providers: Provider[] = [
   PriceStatusService,
   BinanceApiDataProvider,
   MarketDataProvider,
+  PriceNotificationService,
 ];
 
 @Module({
@@ -28,9 +30,13 @@ const providers: Provider[] = [
   controllers: [...httpControllers],
 })
 export class DataCollectorModule implements OnApplicationBootstrap {
-  constructor(private readonly marketDataProvider: MarketDataProvider) {}
+  constructor(
+    private readonly marketDataProvider: MarketDataProvider,
+    private readonly priceNotificationService: PriceNotificationService,
+  ) {}
 
   onApplicationBootstrap(): void {
     this.marketDataProvider.initialize();
+    this.priceNotificationService.initialize();
   }
 }

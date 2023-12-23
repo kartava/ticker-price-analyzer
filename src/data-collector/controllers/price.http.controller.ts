@@ -6,6 +6,7 @@ import {
   SymbolPriceDto,
   SymbolPriceStatusDto,
 } from "../dtos/dtos/price.response.dto";
+import { priceStatusConfig } from "../../configs/price-status.config";
 
 @Controller()
 export class PriceHttpController {
@@ -16,7 +17,9 @@ export class PriceHttpController {
 
   @Get(routesV1.prices.root)
   async getPrices(): Promise<SymbolPriceDto[]> {
-    const prices = this.priceService.getAllPriceTickers();
+    const prices = this.priceService.getLastNPriceTickers(
+      priceStatusConfig.windowSize,
+    );
     return prices.map((price) => new SymbolPriceDto(price));
   }
 
