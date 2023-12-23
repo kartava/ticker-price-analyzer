@@ -13,3 +13,8 @@ export enum SymbolPriceStatus {
   PUMPING = "🟢PUMPING",
   DUMPING = "🔴DUMPING",
 }
+
+export type NotificationState = {
+  price: number;
+  status: Nullable<SymbolPriceStatus>;
+};

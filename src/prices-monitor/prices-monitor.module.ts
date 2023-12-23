@@ -6,6 +6,7 @@ import { PriceStatusService } from "@src/prices-monitor/services/price-status.se
 import { BinanceApiDataProvider } from "@src/prices-monitor/exchange/binance-api-data.provider";
 import { MarketDataProvider } from "@src/prices-monitor/exchange/market-data.provider";
 import { PriceNotificationService } from "@src/prices-monitor/services/price-notification.service";
+import { NotificationsDataProvider } from "@src/prices-monitor/services/notifications-data.provider";
 
 const httpControllers = [PricesHttpController];
 
@@ -14,6 +15,7 @@ const providers: Provider[] = [
   PriceStatusService,
   BinanceApiDataProvider,
   MarketDataProvider,
+  NotificationsDataProvider,
   PriceNotificationService,
 ];
 
@@ -32,11 +34,13 @@ const providers: Provider[] = [
 export class PricesMonitorModule implements OnApplicationBootstrap {
   constructor(
     private readonly marketDataProvider: MarketDataProvider,
+    private readonly notificationsDataProvider: NotificationsDataProvider,
     private readonly priceNotificationService: PriceNotificationService,
   ) {}
 
   onApplicationBootstrap(): void {
     this.marketDataProvider.initialize();
+    this.notificationsDataProvider.initialize();
     this.priceNotificationService.initialize();
   }
 }

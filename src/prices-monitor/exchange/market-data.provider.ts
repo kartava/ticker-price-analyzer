@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { BehaviorSubject, interval, Observable, switchMap } from "rxjs";
-import { SymbolPriceTicker } from "@src/prices-monitor/domain/ticker.types";
+import { SymbolPriceTicker } from "@src/prices-monitor/domain/prices.types";
 import { BinanceApiDataProvider } from "@src/prices-monitor/exchange/binance-api-data.provider";
 import { marketDataProviderConfig } from "@configs/market-data-provider.config";
 

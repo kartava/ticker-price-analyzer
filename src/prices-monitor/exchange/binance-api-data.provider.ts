@@ -5,7 +5,7 @@ import { catchError, map, Observable, tap } from "rxjs";
 import {
   SymbolPriceTicker,
   SymbolPriceTickerResponse,
-} from "@src/prices-monitor/domain/ticker.types";
+} from "@src/prices-monitor/domain/prices.types";
 import { binanceConfig } from "@configs/binance.config";
 
 @Injectable()

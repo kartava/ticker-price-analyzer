@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { priceStatusConfig } from "@configs/price-status.config";
-import { SymbolPriceStatus } from "@src/prices-monitor/domain/ticker.types";
+import { SymbolPriceStatus } from "@src/prices-monitor/domain/prices.types";
 
 @Injectable()
 export class PriceStatusService {
