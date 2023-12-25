@@ -28,7 +28,7 @@ export class BinanceApiDataProvider {
             symbol: response.data.symbol,
             price: Number.parseFloat(response.data.price),
             time: new Date().toISOString(),
-          }) as SymbolPriceTicker,
+          }) satisfies SymbolPriceTicker,
       ),
       tap((data) => {
         this.logger.debug(`Market Data Received: ${JSON.stringify(data)}`);

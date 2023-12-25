@@ -20,12 +20,12 @@ export class PriceStatusService {
   ): Nullable<SymbolPriceStatus> {
     const currentPrice = prices[prices.length - 1];
 
-    const pumpingThreshold = priceStatusConfig.pumpRatio * average;
+    const pumpingThreshold = average + priceStatusConfig.pumpTriggerAmount;
     if (currentPrice > pumpingThreshold) {
       return SymbolPriceStatus.PUMPING;
     }
 
-    const dumpingThreshold = priceStatusConfig.dumpRatio * average;
+    const dumpingThreshold = average - priceStatusConfig.dumpTriggerAmount;
     if (currentPrice < dumpingThreshold) {
       return SymbolPriceStatus.DUMPING;
     }
